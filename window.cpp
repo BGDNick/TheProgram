@@ -190,7 +190,6 @@ void Window::on_pushButtonCalculate_clicked()
     scene = new QGraphicsScene(this);
     ui->graphicsView->setScene(scene);
 
-    scene->addLine(1,1,100,100,QPen(QColor(Qt::red)));
     foreach (Line l, lines) {
         QPen pen(QColor(l.colour[0], l.colour[1], l.colour[2], 255));
         scene->addLine(l.coord1.first, l.coord1.second, l.coord2.first, l.coord2.second, pen);
