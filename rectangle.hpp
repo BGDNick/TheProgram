@@ -11,9 +11,13 @@ public:
 
     QJsonObject toJsonObject();
     Rect fromJsonObject(QJsonObject jObj);
+    QBrush defineQBrush();
+    QPen defineQPen();
 
 public:
     std::pair<double, double> coord2;
+    double reflection = 0; // коэффициент отражения
+    QString name = "Rectangle";
 };
 
 #endif // RECTANGLE_HPP

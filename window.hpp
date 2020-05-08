@@ -5,6 +5,7 @@
 #include "IncludeAll.hpp"
 #include "rectangle.hpp"
 #include "line.hpp"
+#include "lens.hpp"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Window; }
@@ -27,6 +28,8 @@ private slots:
 
     void saveAs();
 
+    void rails();
+
     void on_pushButtonTextEnter_clicked();
 
     void on_pushButtonClear_clicked();
@@ -39,13 +42,35 @@ private slots:
 
     void on_toolButtonL_clicked();
 
+    void on_toolButtonScaleInc_clicked();
+
+    void on_toolButtonDec_clicked();
+
+    void on_pushButtonLensAdd_clicked();
+
+    void on_pushButtonRectAdd_clicked();
+
+    void on_listWidget_itemDoubleClicked(QListWidgetItem *item);
+
+    void on_listWidget_itemClicked(QListWidgetItem *item);
+
+    void on_comboBoxLightType_activated(const QString &arg1);
+
+    void on_pushButtonLightAdd_clicked();
+
+    void on_spinBoxLightAmount_valueChanged(int arg1);
+
 private:
     Ui::Window *ui;
     QString currentFile;
     bool is_saved = true;
     QList<Line> lines;
     QList<Rect> rects;
+    QList<Lens> lens;
+    QList<Light> lights;
+    QList<QListWidgetItem> items;
     QGraphicsScene *scene;
+    QGraphicsView view;
 
 };
 #endif // WINDOW_HPP

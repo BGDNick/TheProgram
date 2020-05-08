@@ -18,4 +18,13 @@
 #include <QtCore>
 #include <QtGui>
 #include <QGraphicsView>
+#include <QGraphicsItem>
+#include <QGraphicsView>
+#include <string>
+#include <QListWidgetItem>
+#include <QIcon>
+#include <QBrush>
+#include "light.hpp"
 #endif // INCLUDEALL_HPP
+
+
