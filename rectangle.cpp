@@ -20,6 +20,11 @@ Rect::Rect(std::pair<double, double> p1, std::pair<double, double> p2)
 QJsonObject Rect::toJsonObject()
 {
     QJsonObject jObj;
+
+    QJsonArray obj;
+    obj = {coord1.first, coord1.second /2 + coord2.second / 2, 0};
+    jObj.insert("centre", QJsonValue::fromVariant(obj));
+    jObj.insert("l", QJsonValue::fromVariant(coord1.second - coord2.second));
     jObj.insert("x1", QJsonValue::fromVariant(coord1.first));
     jObj.insert("y1", QJsonValue::fromVariant(coord1.second));
     jObj.insert("x2", QJsonValue::fromVariant(coord2.first));

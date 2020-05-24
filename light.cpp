@@ -52,6 +52,8 @@ QPen Light::defineQPen()
 
 Light Light::fromJsonObject(QJsonObject jObj)
 {
+    QJsonArray centr;
+    centr = { x1, y1, 0};
     this->name = jObj.value("name").toString();
     this->power = jObj.value("power").toDouble();
     this->x1 = jObj.value("x1").toDouble();
@@ -64,14 +66,18 @@ Light Light::fromJsonObject(QJsonObject jObj)
     return *this;
 }
 
-QJsonObject Light::toJsonObject()
+QJsonObject Light::toJsonObject()// поправить для протяженного источника свеа
 {
     QJsonObject jObj;
 
-    jObj.insert("name", QJsonValue::fromVariant(x1));
-    jObj.insert("power", QJsonValue::fromVariant(x1));
+    QJsonArray centr;
+    centr =  {x1, y1, 0};
+    jObj.insert("centre", centr);
+
+    jObj.insert("name", QJsonValue::fromVariant(name));
+    jObj.insert("power", QJsonValue::fromVariant(power));
     jObj.insert("x1", QJsonValue::fromVariant(x1));
-    jObj.insert("y1", QJsonValue::fromVariant(x1));
+    jObj.insert("y1", QJsonValue::fromVariant(y1));
 
     jObj.insert("x2", QJsonValue::fromVariant(x2));
     jObj.insert("y2", QJsonValue::fromVariant(y2));
@@ -79,7 +85,6 @@ QJsonObject Light::toJsonObject()
 
 
     return jObj;
-
 }
 
 void Light::draw(QGraphicsScene* scene)
@@ -88,7 +93,7 @@ void Light::draw(QGraphicsScene* scene)
     QBrush brush = this->defineQBrush();
     if(!type)
     {
-        scene->addEllipse(x1-0.1, y1-0.1, 0.1, 0.1, pen, brush);
+        scene->addEllipse(x1, y1, 1, 1, pen, brush);
     }
     else
     {
@@ -104,8 +109,6 @@ void Light::draw(QGraphicsScene* scene)
             temp.draw(scene);
         }
     }
-
-
 }
 
 

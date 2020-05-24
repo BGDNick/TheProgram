@@ -23,6 +23,7 @@ public:
     double length;
     double r_index;
     double angle;
+    double height = 0;
     QString name = "Lens";
     QString type = "Flat";
 
